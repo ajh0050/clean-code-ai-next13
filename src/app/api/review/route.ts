@@ -1,29 +1,22 @@
 import { Configuration, OpenAIApi } from "openai";
+import {NextRequest, NextResponse} from "next/server";
 
 export type GenerateReplyRequest = {
   body: { codeToReview: string; language: string };
 };
 
-// Changed from default export to named export for the POST method
-export async function post(req: GenerateReplyRequest, res: any) {
-  const codeToReview = req.body.codeToReview;
-  const language = req.body.language;
+export async function POST(req: NextRequest) {
+  const body = await req.json()
+  const codeToReview = body.codeToReview;
+  const language = body.language;
   const apiKey = process.env.OPEN_AI_API_KEY;
 
   if (!codeToReview) {
-    return res.status(400).json({
-      error: {
-        message: "Missing required parameter: codeToReview",
-      },
-    });
+    return new Response(JSON.stringify({error: {message: "Missing required parameter: codeToReview"}}), {status: 400})
   }
 
   if (!apiKey) {
-    return res.status(400).json({
-      error: {
-        message: "Missing required parameter: apiKey",
-      },
-    });
+    return new Response(JSON.stringify({error: {message: "Missing required parameter: apiKey"}}), {status: 400})
   }
 
   const configuration = new Configuration({ apiKey });
@@ -36,19 +29,19 @@ export async function post(req: GenerateReplyRequest, res: any) {
       temperature: 0.6,
       max_tokens: 2048,
     });
-    res.status(200).json({ result: completion.data.choices[0].text });
+    return new Response(JSON.stringify({result: completion.data.choices[0].text}), {
+      status: 200,
+      headers: {
+        'content-type': 'application/json',
+      },
+    });
   } catch (error: any) {
-    // Consider adjusting the error handling logic for your use case
     if (error.response) {
       console.error(error.response.status, error.response.data);
-      res.status(error.response.status).json(error.response.data);
+      return new Response(JSON.stringify(error.response.data), {status: 501})
     } else {
       console.error(`Error with OpenAI API request: ${error.message}`);
-      res.status(500).json({
-        error: {
-          message: "An error occurred during your request.",
-        },
-      });
+      return new Response("An error occurred during your request.", {status: 500})
     }
   }
 }
