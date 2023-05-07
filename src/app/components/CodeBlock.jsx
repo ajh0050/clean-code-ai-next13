@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import dynamic from "next/dynamic";
 import "@uiw/react-textarea-code-editor/dist.css";
 import { useDarkMode } from "../contexts/darkMode";
@@ -10,6 +10,7 @@ const CodeEditor = dynamic(
 
 const CodeBlock = ({ code, handleCodeChange, style, language }) => {
   const { darkMode } = useDarkMode();
+
   return (
     <CodeEditor
       value={code}
@@ -18,7 +19,7 @@ const CodeBlock = ({ code, handleCodeChange, style, language }) => {
       data-color-mode={darkMode ? "dark" : "light"}
       language={language}
       padding={10}
-      className="bg-white dark:bg-gray-800"
+      className="bg-white dark:bg-gray-800 dark:text-white"
       style={style}
     />
   );

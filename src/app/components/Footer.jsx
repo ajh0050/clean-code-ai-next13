@@ -18,7 +18,7 @@ const Footer = () => {
     >
       <div>
         <p className="dark:text-white text-black">
-          Made with ❤️ in Virginia by{" "}
+          Made with ☕️ in Virginia by{" "}
           <a
             href="https://www.garretthughes.com/"
             target="_blank"
