@@ -6,12 +6,12 @@ import { useDarkMode } from "../contexts/darkMode";
 const CodeReviewResponse = ({ review, isLoading }) => {
   const { darkMode } = useDarkMode();
   return (
-    <>
-      <p className="text-lg font-medium text-black mt-4 leading-6 uppercase tracking-wider text-center underline dark:text-white">
+    <div>
+      <p className="text-lg font-medium text-black mt-2 leading-6 uppercase tracking-wider text-center underline dark:text-white">
         Review
       </p>
       <br />
-      <div className="px-5">
+      <div className="px-5 overflow-y-auto max-h-[65vh] text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-lg">
         {isLoading ? (
           <div className="flex justify-center">
             <ThreeDots
@@ -24,12 +24,12 @@ const CodeReviewResponse = ({ review, isLoading }) => {
             />
           </div>
         ) : (
-          <ReactMarkdown className="overflow-hidden rounded-md p-5 [&>ol]:list-disc [&>ul]:list-disc">
+          <ReactMarkdown className="overflow-hidden rounded-md px-5 [&>ol]:list-disc [&>ul]:list-disc">
             {review}
           </ReactMarkdown>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
