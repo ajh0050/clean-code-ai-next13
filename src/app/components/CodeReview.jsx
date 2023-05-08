@@ -77,7 +77,7 @@ const CodeReview = () => {
     let prompt = `You're an expert level software engineer and have a single ${language} file to refactor. You're a stickler for clean code, meaning no comments in the code, code should be self documenting, using correct naming for variables and functions, creating the right abstractions and many more ideas that you pull from Kent Beck, Martin Fowler, Bob Martin and other engineering thought leaders. Please write inline comments about your design decisions and talking about the choices you made in your refactor (only for things you changed) and reply back the code that you refactored(only put things you actually changed).  Please now refactor the following code:
     ${code}`
     if (!code) return toast.error("Please enter some code to refactor");
-    setRefactor("loading");
+    setRefactor(" ");
     setReview("");
     setIsLoading(true);
 
@@ -112,7 +112,6 @@ const CodeReview = () => {
       setRefactor((prev) => prev + chunkValue);
     }
     setIsLoading(false);
-
   };
 
 

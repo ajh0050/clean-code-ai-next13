@@ -19,7 +19,7 @@ const CodeBlock = ({ code, handleCodeChange, style, language }) => {
       data-color-mode={darkMode ? "dark" : "light"}
       language={language}
       padding={10}
-      className="bg-white dark:bg-gray-800 dark:text-white"
+      className="bg-white dark:bg-gray-800 dark:text-white text-xs sm:text-sm md:text-base lg:text-lg xl:text-lg 2xl:text-lg"
       style={style}
     />
   );
