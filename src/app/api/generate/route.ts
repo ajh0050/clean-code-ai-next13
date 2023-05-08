@@ -4,9 +4,11 @@ if (!process.env.OPEN_AI_API_KEY) {
   throw new Error("Missing env var from OpenAI");
 }
 
-export const config = {
-  runtime: "edge",
-};
+// export const config = {
+//   runtime: "edge",
+// };
+export const runtime = 'nodejs'
+
 
 export async function POST(req: Request): Promise<Response> {
   const { prompt } = (await req.json()) as {
@@ -18,7 +20,7 @@ export async function POST(req: Request): Promise<Response> {
   }
 
   const payload: OpenAIStreamPayload = {
-    model: "text-davinci-003",
+    model: "gpt-3.5-turbo",
     messages: [{ role: "user", content: prompt }],
     temperature: 0.6,
     top_p: 1,
