@@ -1,6 +1,8 @@
 'use client';
 import Head from "next/head";
 import CodeReview from "./components/CodeReview";
+import { Analytics } from '@vercel/analytics/react';
+
 
 export default function Home() {
   return (
@@ -16,6 +18,7 @@ export default function Home() {
       </Head>
       <main>
         <CodeReview />
+        <Analytics />
       </main>
     </>
   );
