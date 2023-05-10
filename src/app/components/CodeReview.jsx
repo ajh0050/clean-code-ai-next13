@@ -26,7 +26,10 @@ const CodeReview = () => {
   };
 
   const handleReview = async () => {
-    let prompt = `You're an expert level software engineer and have a single ${language} file to review. You are reviewing code for peers. You're a stickler for clean code, meaning no comments in the code, code should be self documenting, using correct naming for variables and functions, creating the right abstractions and many more ideas that you pull from Kent Beck, Martin Fowler, Bob Martin and other engineering thought leaders. You do not need to refactor and provide any code unless it makes sense for the small suggestion that you reviewed, note to not do the whole file. Please reply back with only suggestions in markdown format with each suggestion in a list to keep things easy to navigate. Please review the following code now:
+    let prompt = `Assuming the role of a seasoned software engineer, you are tasked with conducting a peer review of a given ${language} file. Your primary focus lies in ensuring adherence to the principles of clean code, which include but are not limited to: self-documenting code without reliance on comments, appropriate and meaningful naming conventions for variables and functions, check for unused imports and unused functions (that aren’t exported), and the construction of fitting abstractions. These principles are inspired by industry leaders such as Kent Beck, Martin Fowler, and Robert C. Martin.
+    Please remember that this task does not necessarily require the refactoring of any code. Only provide refactored code when it is instrumental to clarify a minor suggestion. It is not expected of you to overhaul the entire file.
+    Your feedback should be presented in a markdown format, with each suggestion itemized on a separate line to facilitate easy navigation and each suggestion should include a specific example from the provided code.
+    Now commence the code review of the following ${language} file:
     ${code}`
     if (!code) return toast.error("Please enter some code to review");
     setRefactor("");
