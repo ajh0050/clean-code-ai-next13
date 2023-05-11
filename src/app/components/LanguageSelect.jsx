@@ -1,4 +1,5 @@
 import React from "react";
+import useScreenWidthCheck from "../hooks/screenWidth";
 
 const languages = [
   "abap",
@@ -99,11 +100,12 @@ const languages = [
 ];
 
 const LanguageSelect = ({ language, handleLanguageChange }) => {
+    const isScreenWidthSmallerThan647 = useScreenWidthCheck(647);
   return (
     <div>
-      <label htmlFor="language" className="mr-2">
+      {!isScreenWidthSmallerThan647 && <label htmlFor="language" className="mr-2">
         Language:
-      </label>
+      </label>}
       <select
         name="language"
         id="language"
