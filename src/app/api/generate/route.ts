@@ -23,7 +23,7 @@ export async function POST(req: Request): Promise<Response> {
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 2048,
+    max_tokens: 3300,
     stream: true,
     n: 1,
   };
