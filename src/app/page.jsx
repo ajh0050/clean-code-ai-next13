@@ -8,7 +8,7 @@ export default function Home() {
   const domain = "https://cleancode-ai.vercel.app";
   return (
     <>
-      <Head>
+      {/* <Head>
         <title>Clean Code AI</title>
         <meta
           name="description"
@@ -19,7 +19,7 @@ export default function Home() {
         <meta name="image" property="og:image" content={`${domain}/cleancode.png`} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
-      </Head>
+      </Head> */}
       <main>
         <CodeReview />
         <Analytics />
